@@ -16,4 +16,6 @@ func main() {
 		Fiber:               Fibergram(),
 		Protein:             Proteingram(),
 	}, Food)
+
+	fmt.Printf("your score is %v",)
 }
