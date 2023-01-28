@@ -10,12 +10,13 @@ func main() {
 	ns := GetNutritionalScore(NutrionalData{
 		Energy:              EnergyFromkcal(0),
 		Sugars:              SugarGram(10),
-		SaturatedFattyAcids: SaturatedFattyAcids(),
-		Sodium:              SodiumMilligram(),
-		Fruits:              FruitsPercent(),
-		Fiber:               Fibergram(),
-		Protein:             Proteingram(),
+		SaturatedFattyAcids: SaturatedFattyAcids(33),
+		Sodium:              SodiumMilligram(100),
+		Fruits:              FruitsPercent(22),
+		Fiber:               Fibergram(11),
+		Protein:             Proteingram(30),
 	}, Food)
 
-	fmt.Printf("your score is %v",)
+	fmt.Printf("your score is: %v\n", ns.Value)
+	fmt.Printf("Nutriscore: %s\n", ns.GetNutriScore())
 }
