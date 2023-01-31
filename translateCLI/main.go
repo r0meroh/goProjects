@@ -35,16 +35,16 @@ func main() {
 	strChannel := make(chan string)
 	wg.Add(1)
 
-	requestBody := &cli.RequestBody{
+	reqBody := &cli.RequestBody{
 		SourceLanguage: sourceLanguage,
 		TargetLanguage: targetLanguage,
 		SourceText: sourceText,
 	}
 	
-	go cli.RequestTranslate(requestBody, strChannel, &wg)
+	go cli.RequestTranslate(reqBody, strChannel, &wg)
 
 	processedString := strings.ReplaceAll(<-strChannel, "+", " ")
-	fmt.Println(processedString)
+	fmt.Printf("%s\n",processedString)
 	close(strChannel)
 	wg.Wait()
 }

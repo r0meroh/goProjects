@@ -1,0 +1,1 @@
+"github.com/r0meroh/goProjects/translateCLI/cli"

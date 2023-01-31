@@ -7,7 +7,7 @@ import (
 	"github.com/Jeffail/gabs"
 )
 
-type requestBody struct {
+type RequestBody struct {
 	SourceLanguage string
 	TargetLanguage string
 	SourceText string
@@ -16,7 +16,7 @@ type requestBody struct {
 const translateUrl = "https://translate.googleapis.com/translate_a/single"
 
 func RequestTranslate(body *RequestBody, str chan string, wg *sync.WaitGroup){
-	client := http.Client{}
+	client := &http.Client{}
 	req, err := http.NewRequest("Get", translateUrl, nil)
 	if err != nil {
 		fmt.Println(err)
@@ -60,4 +60,6 @@ func RequestTranslate(body *RequestBody, str chan string, wg *sync.WaitGroup){
 	if err != nil{
 		fmt.Println("error in translated final string")
 	}
+	str <- translatedString.Data().(string)
+	wg.Done()
 }  
